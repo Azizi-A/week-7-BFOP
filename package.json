@@ -1,0 +1,39 @@
+{
+  "name": "week-7-bfop",
+  "version": "1.0.0",
+  "description": "Week 7 REST API project.",
+  "main": "index.js",
+  "scripts": {
+    "testDb": "NODE_ENV=test tape 'tests/db.tests.js' | tap-spec",
+    "testServer": "NODE_ENV=test tape 'tests/server.tests.js' | tap-spec",
+    "test": "NODE_ENV=test tape 'tests/*' | tap-spec",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac20/week-7-BFOP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac20/week-7-BFOP/issues"
+  },
+  "homepage": "https://github.com/fac20/week-7-BFOP#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "nock": "^13.0.4",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.1"
+  }
+}
