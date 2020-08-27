@@ -5,7 +5,7 @@ const users = require("./handlers/users");
 const verifyUser = require("./middleware/auth");
 const handleError = require("./middleware/error");
 
-const PORT = process.send.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
