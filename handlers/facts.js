@@ -10,6 +10,16 @@ const get = (req, res, next) => {
     .catch(next);
 };
 
+const getFactsAbout = (req, res, next) => {
+  const name = req.params.name;
+  model
+    .readFactsAbout(name)
+    .then(facts => {
+      res.send(facts);
+    })
+    .catch(next);
+};
+
 const getAll = (req, res, next) => {
   model
     .readAllFacts()
@@ -59,7 +69,7 @@ const create = (req, res, next) => {
 const del = (req, res, next) => {
   const factId = req.params.id;
   const userId = req.user.id;
-  model.readFact(id).then(fact => {
+  model.readFact(factId).then(fact => {
     if (fact.owner_id !== userId) {
       const error = new Error("User not autorised");
       error.status = 401;
@@ -72,4 +82,4 @@ const del = (req, res, next) => {
   });
 };
 
-module.exports = { get, getAll, update, del, create };
+module.exports = { get, getAll, update, del, create, getFactsAbout };
