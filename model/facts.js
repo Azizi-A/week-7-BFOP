@@ -40,7 +40,7 @@ const deleteFact = fact_id => {
 };
 
 //get all posts about one person
-//get all posts wtih same owner id
+//get all posts with same owner id
 
 module.exports = {
   createFact,
