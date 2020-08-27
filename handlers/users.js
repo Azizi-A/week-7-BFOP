@@ -13,7 +13,11 @@ const signup = (req, res, next) => {
     .genSalt(10)
     .then(salt => bcrypt.hash(newUser.password, salt))
     .then(hash =>
-      model.createUser({ username: newUser.username, password: hash })
+      model.createUser({
+        username: newUser.username,
+        password: hash,
+        cohort: newUser.cohort,
+      })
     )
     .then(user => {
       const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
