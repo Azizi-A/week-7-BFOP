@@ -1,5 +1,6 @@
 <p align="center">
   <a href="https://github.com/fac20/week-7-BFOP">Our repo link.</a>
+  <a href="fun-facs-api.herokuapp.com">Our heroku link.</a>
 
   <h3 align="center">Fun FACs</h3>
 
@@ -24,8 +25,8 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
-* [Usage](#usage)
-* [Contact](#contact)
+* [Usage Instructions](#usage)
+* [Team](#team)
 * [Acknowledgements](#acknowledgements)
 
 
@@ -33,8 +34,6 @@
 This is a project created as part of the [Founders and Coders](https://www.foundersandcoders.com/) curriculum, week 7. The task was to build a REST API which returns JSON data. [The project requirements.](https://founders-and-coders.gitbook.io/coursebook/curriculum/rest-apis/project)
 
 ## User stories
-
-### Core
 
 - **As an API user, I want to**: get a list of all available resources
 - **As an API user, I want to**: get all the information on a specific resource
@@ -75,17 +74,21 @@ git clone https://github.com/fac20/week-7-BFOP.git
 ```sh
 npm install
 ```
-3. Create a database
-4. Create a 
+3. Create a database and a test database
+- `CREATE DATABASE test_bfop;`
+- `CREATE DATABASE bfop;`
+- `\connect bfop`
+- `\include database/init.sql`
+4. Create a .env file
+- ensure this file is in your root folder
+- it should contain 3 variables: 
+  - DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/bfop
+  - TEST_DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/test_bfop
+  - SECRET=randomstring
 
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
+## Usage Instructions
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 ## Team
@@ -94,9 +97,6 @@ Azizi - Scrum Facilitator
 Lisa - Design
 Terrence - Deployment
 Aishah - Quality
-
-Project Link: [https://github.com/fac20/week-7-BFOP](https://github.com/fac20/week-7-BFOP)
-Heroku Link: 
 
 ## Acknowledgements
 
