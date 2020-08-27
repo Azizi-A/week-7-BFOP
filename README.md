@@ -62,7 +62,47 @@ Since this project is open-ended you'll need to write your own more specific use
 
 ## Getting Started
 
-Our API is hosted on [Heroku](fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow these simple steps.
+Our API is hosted on [Heroku](fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow these simple steps in [Installation](#installation).
+
+Here are some curls if you wish to test the Heroku version. 
+- Get all cohort facts from the colection: 
+curl --request GET \
+  --url https://fun-facs-api.herokuapp.com/facts/
+  
+- Sign up to add your own facts
+curl --request POST \
+  --url https://fun-facs-api.herokuapp.com/signup \
+  --header 'content-type: application/json' \
+  --data '{
+	"username": "YOU",
+	"password": "PICK_ONE",
+	"cohort": "FAC20"
+}'
+- Add a fact - you'll need your id and authorization token from the signin or login response
+curl --request POST \
+  --url https://fun-facs-api.herokuapp.com/facts/ \
+  --header 'authorization: Bearer YOUR_TOKEN_HERE' \
+  --header 'content-type: application/json' \
+  --data '{	 
+	"owner_id": YOUR_ID_NUMBER,
+	"about_who": "COHORT_MEMBER",
+  "text_content": "FACT"	
+}'
+
+- Edit your fact - you can only edit facts you've added
+curl --request PUT \
+  --url https://fun-facs-api.herokuapp.com/facts/FACT_ID_NUMBER \
+  --header 'authorization: Bearer YOUR_TOKEN_HERE' \
+  --header 'content-type: application/json' \
+  --data '{
+  "about_who": "NEW_COHORT_MEMBER",
+  "text_content": "NEW_TEXT"
+}'
+
+- Delete your fact - you can only delete facts you've added
+curl --request DELETE \
+  --url https://fun-facs-api.herokuapp.com/facts/FACT_ID_NUMBER \
+  --header 'authorization: Bearer YOUR_TOKEN_HERE'
 
 ### Installation
 
