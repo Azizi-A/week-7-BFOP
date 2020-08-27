@@ -6,7 +6,7 @@ const model = require("../model/users");
 const SECRET = process.env.SECRET;
 
 // app.post("/users", users.signup);
-function signup(req, res, next) {
+const signup = (req, res, next) => {
   const newUser = req.body; //for example this would look like: {username: tc112, password: mypassword}
   //hash user password
   bcrypt
@@ -23,10 +23,10 @@ function signup(req, res, next) {
       res.status(201).send(user);
     })
     .catch(next);
-}
+};
 
 // app.post("/users/login", users.login);
-function login(req, res, next) {
+const login = (req, res, next) => {
   //get req.body
   const username = req.body.username;
   const password = req.body.password;
@@ -46,6 +46,6 @@ function login(req, res, next) {
       res.status(200).send({ access_token: token });
     })
     .catch(next);
-}
+};
 
 module.exports = { signup, login };

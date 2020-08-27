@@ -1,9 +1,6 @@
 const model = require("../model/facts");
 
-// app.post("/facts/:member", verifyUser, facts.create);
-// app.delete("/facts/:id", verifyUser, facts.del);
-
-function get(req, res, next) {
+const get = (req, res, next) => {
   const id = req.params.id;
   model
     .readFact(id)
@@ -11,7 +8,7 @@ function get(req, res, next) {
       res.send(facts);
     })
     .catch(next);
-}
+};
 
 const getAll = (req, res, next) => {
   model
@@ -21,11 +18,11 @@ const getAll = (req, res, next) => {
     })
     .catch(next);
 };
-
+//is there a better/cleaner way to write this function
 const update = (req, res, next) => {
   const factId = req.params.id;
   const userId = req.user.id;
-  const updatedFact = req.body;
+  const updatedFact = req.body.text_content;
   model
     .readFact(factId)
     .then(fact => {
@@ -46,21 +43,33 @@ const update = (req, res, next) => {
     })
     .catch(next);
 };
-/*const createFact = data => {
-  return db.query(
-    "INSERT INTO users (owner_id, text_content, about_who) VALUES ($1, $2, $3)",
-    [data.owner_id, data.text_content, data.about_who]
-  ); //get $1 from jwt
-  //error handling incase people leave out some values
-};
- */
+
 const create = (req, res, next) => {
   const data = {
     owner_id: req.user.id,
-    text_content: req.body,
-    about_who: "huh",
+    text_content: req.body.text_content,
+    about_who: req.body.about_who,
   };
-  model.createFact(data).then();
+  model
+    .createFact(data)
+    .then(fact => res.status(201).send(fact))
+    .catch(next);
 };
 
-module.exports = { get, getAll, update, del };
+const del = (req, res, next) => {
+  const factId = req.params.id;
+  const userId = req.user.id;
+  model.readFact(id).then(fact => {
+    if (fact.owner_id !== userId) {
+      const error = new Error("User not autorised");
+      error.status = 401;
+      next(error);
+    } else {
+      model.deleteFact(factId).then(fact => {
+        res.status(204).send("Lost 4EVAAAAAAAAAAA");
+      });
+    }
+  });
+};
+
+module.exports = { get, getAll, update, del, create };
