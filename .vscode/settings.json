@@ -1,0 +1,9 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "html.format.indentHandlebars": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.endWithNewline": true,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "eslint.format.enable": true
+}
