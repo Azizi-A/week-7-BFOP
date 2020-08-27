@@ -11,14 +11,14 @@ const app = express();
 
 app.use(express.json());
 
-// router handler directing
-// these functions need to be written and imported
+// ----- Router handler directing -----
+// ----- Facts -----
 app.get("/facts/:member", facts.get);
 app.get("/facts", facts.getAll);
 app.post("/facts/:member", verifyUser, facts.create);
 app.put("/facts/:id", verifyUser, facts.update);
 app.delete("/facts/:id", verifyUser, facts.del);
-
+// ----- Users -----
 app.post("/users", users.signup);
 app.post("/users/login", users.login);
 
