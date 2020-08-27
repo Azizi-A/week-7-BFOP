@@ -1,0 +1,40 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: CI testing
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+  workflow_dispatch:
+
+jobs:
+    container-job:
+        runs-on: ubuntu-latest
+        container: node:10.18-jessie
+        services:
+            postgres:
+                image: postgres
+                env:
+                    POSTGRES_PASSWORD: postgres
+                options: >-
+                    --health-cmd pg_isready
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 5
+ 
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v2
+            - name: Install dependencies
+              run: npm i
+            - name: Runs test script
+              run: npm test
+              env:
+                TEST_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+                CI: true
+
