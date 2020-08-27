@@ -13,15 +13,14 @@ app.use(express.json());
 
 // router handler directing
 // these functions need to be written and imported
-app.get("/facts/:member", facts.readMemberFacts);
-app.get("/facts", facts.readAllFacts);
-app.post("/facts/:member", verifyUser, facts.createFact);
-app.put("/facts/:id", verifyUser, facts.put);
-app.delete("/facts/:id", verifyUser, facts.deleteFact);
+app.get("/facts/:member", facts.get);
+app.get("/facts", facts.getAll);
+app.post("/facts/:member", verifyUser, facts.create);
+app.put("/facts/:id", verifyUser, facts.update);
+app.delete("/facts/:id", verifyUser, facts.del);
 
-app.post("/users", users.createUser);
+app.post("/users", users.signup);
 app.post("/users/login", users.login);
-app.post("/users/logout", users.logout);
 
 //error middleware
 app.use(handleError);
