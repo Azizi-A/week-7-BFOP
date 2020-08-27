@@ -21,7 +21,6 @@ app.delete("/facts/:id", verifyUser, facts.del);
 
 app.post("/users", users.signup);
 app.post("/users/login", users.login);
-app.post("/users/logout", users.logout);
 
 //error middleware
 app.use(handleError);

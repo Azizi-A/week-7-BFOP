@@ -5,31 +5,47 @@ const model = require("../model/users");
 
 const SECRET = process.env.SECRET;
 
-//verify that the user email does not already exist in our db
-
 // app.post("/users", users.signup);
 function signup(req, res, next) {
-  let newUser = req.body;
-  //   hash user password
-  //   newUser.password = bcrypt(password)
-  //   bcrypt.genSalt(10)
-  //   .then(salt => bcrypt.hash(password, salt))
-
-  model
-    .createUser(newUser)
+  const newUser = req.body; //for example this would look like: {username: tc112, password: mypassword}
+  //hash user password
+  bcrypt
+    .genSalt(10)
+    .then(salt => bcrypt.hash(newUser.password, salt))
+    .then(hash =>
+      model.createUser({ username: newUser.username, password: hash })
+    )
     .then(user => {
-      token = jwt.sign({ user: user.id });
-      delete user.password;
+      const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
       user.access_token = token;
+      delete user.password; //instead of creating a new response object without
+      //the pw we delete the hashed pw from the promise object
       res.status(201).send(user);
     })
     .catch(next);
 }
 
 // app.post("/users/login", users.login);
-function login(req, res, next) {}
+function login(req, res, next) {
+  //get req.body
+  const username = req.body.username;
+  const password = req.body.password;
+  //get hashed pw from db matching entered username
+  model
+    .getUser(username)
+    .then(user => {
+      const compareResult = bcrypt.compare(password, user.password);
+      // })
+      // .then(compareResult => {
+      if (!compareResult) {
+        const matchError = new Error("Wrong password!");
+        matchError.status = 403;
+        next(matchError);
+      }
+      const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
+      res.status(200).send({ access_token: token });
+    })
+    .catch(next);
+}
 
-// app.post("/users/logout", users.logout);
-function logout(req, res, next) {}
-
-module.exports = { signup, login, logout };
+module.exports = { signup, login };
