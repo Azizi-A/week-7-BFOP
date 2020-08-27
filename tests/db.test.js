@@ -11,7 +11,6 @@ test("test for model.readUser", t => {
     .then(() =>
       model.users
         .readUser("mrladybug")
-        .then(result => result.rows[0])
         .then(user => {
           t.equal(user.id, 1);
           t.equal(user.password, "12345");
@@ -59,7 +58,6 @@ test("test for reading all users", t => {
     .then(() => {
       model.users
         .readAllUsers()
-        .then(result => result.rows)
         .then(users => {
           t.equal(users[0].username, "mrladybug");
           t.equal(users[1].username, "mrsladybug");
@@ -82,7 +80,6 @@ test("test for reading a fact", t => {
     .then(() => {
       model.facts
         .readFact(1)
-        .then(result => result.rows[0])
         .then(fact => {
           t.equal(fact.text_content, "She paints her black dots on");
           t.equal(fact.about_who, "mrsladybug");
@@ -111,7 +108,6 @@ test("test for creating a fact", t => {
       model.facts.createFact(data).then(() => {
         model.facts
           .readFact(3)
-          .then(result => result.rows[0])
           .then(fact => {
             t.equal(fact.owner_id, 1);
             t.equal(fact.text_content, "travels the globe");
