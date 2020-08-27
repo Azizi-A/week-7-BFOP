@@ -26,4 +26,4 @@ app.post("/users/login", users.login);
 //error middleware
 app.use(handleError);
 
-app.listen(PORT, () => console.log(`Listening on http:localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
