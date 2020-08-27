@@ -5,7 +5,7 @@ const createFact = data => {
     "INSERT INTO users (owner_id, text_content, about_who) VALUES ($1, $2, $3)",
     [data.owner_id, data.text_content, data.about_who]
   ); //get $1 from jwt
-  //error handling incase people leave out some values
+  //error handling in case people leave out some values
 };
 
 const readFact = id => {
@@ -32,7 +32,7 @@ const deleteFact = fact_id => {
 };
 
 //get all posts about one person
-//get all posts wtih same owner id
+//get all posts with same owner id
 
 module.exports = {
   createFact,
