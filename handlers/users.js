@@ -38,16 +38,15 @@ const login = (req, res, next) => {
   model
     .readUser(username)
     .then(user => {
-      const compareResult = bcrypt.compare(password, user.password);
-      // })
-      // .then(compareResult => {
-      if (!compareResult) {
-        const matchError = new Error("Wrong password!");
-        matchError.status = 403;
-        next(matchError);
-      }
-      const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
-      res.status(200).send({ access_token: token });
+      bcrypt.compare(password, user.password).then(compareResult => {
+        if (!compareResult) {
+          const matchError = new Error("Wrong password!");
+          matchError.status = 403;
+          next(matchError);
+        }
+        const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
+        res.status(200).send({ access_token: token });
+      });
     })
     .catch(next);
 };
