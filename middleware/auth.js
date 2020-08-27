@@ -14,7 +14,7 @@ function verifyUser(req, res, next) {
   try {
     const data = jwt.verify(token, SECRET);
     model
-      .getUserByID(data.user)
+      .readUserByID(data.user)
       .then(user => {
         req.user = user;
         next();
@@ -27,4 +27,4 @@ function verifyUser(req, res, next) {
   }
 }
 
-model.export = verifyUser;
+module.exports = verifyUser;

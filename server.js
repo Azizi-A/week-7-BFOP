@@ -15,9 +15,10 @@ app.use(express.json());
 // ----- Facts -----
 app.get("/facts/:member", facts.get);
 app.get("/facts", facts.getAll);
-app.post("/facts/:member", verifyUser, facts.create);
+app.post("/facts/:id", verifyUser, facts.create); //here error
 app.put("/facts/:id", verifyUser, facts.update);
 app.delete("/facts/:id", verifyUser, facts.del);
+
 // ----- Users -----
 app.post("/users", users.signup);
 app.post("/users/login", users.login);

@@ -18,7 +18,9 @@ const readUser = username => {
 };
 
 const readUserByID = id => {
-  return db.query("SELECT * FROM users WHERE id=($1)", [id]);
+  return db
+    .query("SELECT * FROM users WHERE id=($1)", [id])
+    .then(result => result.rows[0]);
 };
 
 //good for testing but security concern so remove in final product

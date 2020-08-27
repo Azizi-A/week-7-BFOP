@@ -34,7 +34,6 @@ test("test for model.readUserByID", t => {
     .then(() =>
       model.users
         .readUserByID(1)
-        .then(result => result.rows[0])
         .then(user => {
           t.equal(user.username, "mrladybug");
           t.equal(user.password, "12345");
