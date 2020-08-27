@@ -16,6 +16,12 @@ const readFact = id => {
     .then(result => result.rows[0]);
 };
 
+const readFactsAbout = name => {
+  return db
+    .query("SELECT * FROM facts where about_who=($1)", [name])
+    .then(result => result.rows[0]);
+};
+
 const readRandomFact = () => {
   return db
     .query("SELECT * FROM facts ORDER BY RANDOM() LIMIT 1")
@@ -45,6 +51,7 @@ const deleteFact = fact_id => {
 module.exports = {
   createFact,
   readFact,
+  readFactsAbout,
   readRandomFact,
   readAllFacts,
   updateFact,

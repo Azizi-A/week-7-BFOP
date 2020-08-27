@@ -13,15 +13,17 @@ app.use(express.json());
 
 // ----- Router handler directing -----
 // ----- Facts -----
-app.get("/facts/:member", facts.get);
+app.get("/facts/name/:name", facts.getFactsAbout);
+app.get("/facts/:id", facts.get);
+
 app.get("/facts", facts.getAll);
-app.post("/facts/:id", verifyUser, facts.create); //here error
+app.post("/facts/", verifyUser, facts.create); //here error
 app.put("/facts/:id", verifyUser, facts.update);
 app.delete("/facts/:id", verifyUser, facts.del);
 
 // ----- Users -----
-app.post("/users", users.signup);
-app.post("/users/login", users.login);
+app.post("/signup", users.signup);
+app.post("/login", users.login);
 
 //error middleware
 app.use(handleError);

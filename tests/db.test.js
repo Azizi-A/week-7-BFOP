@@ -95,6 +95,26 @@ test("test for reading a fact", t => {
     });
 });
 
+test("test for reading facts about a specific person", t => {
+  build()
+    .then(() => {
+      model.facts
+        .readFactsAbout("mrladybug")
+        .then(fact => {
+          t.equal(fact.text_content, "He wears a wig!");
+          t.end();
+        })
+        .catch(error => {
+          t.error(error);
+          t.end();
+        });
+    })
+    .catch(buildError => {
+      t.error(buildError);
+      t.end();
+    });
+});
+
 // createFact
 test("test for creating a fact", t => {
   data = {
