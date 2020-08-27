@@ -6,7 +6,7 @@ const createFact = data => {
       "INSERT INTO facts (owner_id, text_content, about_who) VALUES ($1, $2, $3) RETURNING *",
       [data.owner_id, data.text_content, data.about_who]
     )
-    .then(result => result.row[0]); //get $1 from jwt
+    .then(result => result.rows[0]); //get $1 from jwt
   //error handling incase people leave out some values
 };
 
