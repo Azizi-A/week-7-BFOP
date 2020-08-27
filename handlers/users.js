@@ -32,7 +32,7 @@ const login = (req, res, next) => {
   const password = req.body.password;
   //get hashed pw from db matching entered username
   model
-    .getUser(username)
+    .readUser(username)
     .then(user => {
       const compareResult = bcrypt.compare(password, user.password);
       // })

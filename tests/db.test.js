@@ -5,6 +5,7 @@ const facts = require("../model/facts");
 const model = { users, facts };
 const db = require("../database/connection");
 
+// readUser
 test("test for model.readUser", t => {
   build()
     .then(() =>
@@ -24,6 +25,30 @@ test("test for model.readUser", t => {
     .catch(buildError => {
       t.error(buildError);
       t.end();
+    });
+});
+
+//readUserByID
+test("test for model.readUserByID", t => {
+  build()
+    .then(() =>
+      model.users
+        .readUserByID(1)
+        .then(result => result.rows[0])
+        .then(user => {
+          t.equal(user.username, "mrladybug");
+          t.equal(user.password, "12345");
+          t.equal(user.cohort, "FAC50");
+          t.end();
+        })
+        .catch(error => {
+          t.error(error);
+          t.end();
+        })
+    )
+    .catch(buildError => {
+      t.error(buildError);
+      t.end;
     });
 });
 
