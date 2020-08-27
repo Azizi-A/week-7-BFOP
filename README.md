@@ -133,9 +133,9 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 ## Team
 
-Azizi - Scrum Facilitator
-Lisa - Design
-Terrence - Deployment
+Azizi - Scrum Facilitator,
+Lisa - Design,
+Terrence - Deployment,
 Aishah - Quality
 
 ## Acknowledgements
