@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/fac20/week-7-BFOP">Our repo link.</a>
-  <a href="fun-facs-api.herokuapp.com">Our heroku link.</a>
+  <a href="http://fun-facs-api.herokuapp.com">Our heroku link.</a>
 
   <h3 align="center">Fun FACs</h3>
 
@@ -64,7 +64,7 @@ Since this project is open-ended you'll need to write your own more specific use
 
 ## Getting Started
 
-Our API is hosted on [Heroku](fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow the simple steps below in [Installation](#installation).
+Our API is hosted on [Heroku](http://fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow the simple steps below in [Installation](#installation).
 
 
 
