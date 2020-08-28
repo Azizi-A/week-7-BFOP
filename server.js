@@ -25,8 +25,4 @@ app.post("/login", users.login);
 //error middleware
 app.use(handleError);
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
-
 module.exports = app;

@@ -100,6 +100,7 @@ test("test for reading facts about a specific person", t => {
     .then(() => {
       model.facts
         .readFactsAbout("mrladybug")
+        .then(result => result[0])
         .then(fact => {
           t.equal(fact.text_content, "He wears a wig!");
           t.end();
@@ -143,10 +144,4 @@ test("test for creating a fact", t => {
       t.err(buildError);
       t.end();
     });
-});
-
-test("Close DB pool (not a real test)", t => {
-  // otherwise tests will pause for 10s in the terminal
-  db.end();
-  t.end();
 });

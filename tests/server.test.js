@@ -3,6 +3,7 @@ const supertest = require("supertest");
 const build = require("../database/build");
 require("dotenv").config();
 const app = require("../server");
+const db = require("../database/connection");
 
 test("tests for GET /facts route", t => {
   build().then(() => {
@@ -23,3 +24,9 @@ test("tests for GET /facts route", t => {
 // PUT /facts/:id
 
 // DELETE /facts/:id
+
+test("Close DB pool (not a real test)", t => {
+  // otherwise tests will pause for 10s in the terminal
+  db.end();
+  t.end();
+});
