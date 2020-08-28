@@ -41,7 +41,7 @@ const update = (req, res, next) => {
       //compare who wrote it to current logged in person
       if (fact.owner_id !== userId) {
         //if !match then send new error to middleware
-        const error = new Error("User not autorised");
+        const error = new Error("User not authorised");
         error.status = 401;
         next(error);
       } else {
@@ -71,7 +71,7 @@ const del = (req, res, next) => {
   const userId = req.user.id;
   model.readFact(factId).then(fact => {
     if (fact.owner_id !== userId) {
-      const error = new Error("User not autorised");
+      const error = new Error("User not authorised");
       error.status = 401;
       next(error);
     } else {
