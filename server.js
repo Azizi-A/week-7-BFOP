@@ -5,8 +5,6 @@ const users = require("./handlers/users");
 const verifyUser = require("./middleware/auth");
 const handleError = require("./middleware/error");
 
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 app.use(express.json());
@@ -15,9 +13,8 @@ app.use(express.json());
 // ----- Facts -----
 app.get("/facts/name/:name", facts.getFactsAbout);
 app.get("/facts/:id", facts.get);
-
 app.get("/facts", facts.getAll);
-app.post("/facts/", verifyUser, facts.create); //here error
+app.post("/facts/", verifyUser, facts.create);
 app.put("/facts/:id", verifyUser, facts.update);
 app.delete("/facts/:id", verifyUser, facts.del);
 
@@ -28,4 +25,8 @@ app.post("/login", users.login);
 //error middleware
 app.use(handleError);
 
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+
+module.exports = app;

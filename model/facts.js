@@ -19,7 +19,7 @@ const readFact = id => {
 const readFactsAbout = name => {
   return db
     .query("SELECT * FROM facts where about_who=($1)", [name])
-    .then(result => result.rows[0]);
+    .then(result => result.rows);
 };
 
 const readRandomFact = () => {
