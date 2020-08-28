@@ -25,8 +25,8 @@
 * [Getting Started](#getting-started)
   * [Installation](#installation)
 * [Usage Instructions](#usage-instructions)
-  * [Routes and Data](#to-use-the-api-locally/using-insomnia/postman)
-  * [Curls](#here-are-some-curls-if-you-wish-to-test-the-heroku-version:)
+  * [Routes and Data](#to-use-the-api-locallyusing-insomniapostman-replace-values-within-)
+  * [Curls](#here-are-some-curls-if-you-wish-to-test-the-heroku-version)
 * [Team](#team)
 * [Acknowledgements](#acknowledgements)
 
@@ -123,7 +123,7 @@ npm install
 	"password": "<PASSWORD>"
 }
 ```
-(FOR THE ACTIONS BELOW, ENSURE YOU HAVE A BEARER TOKEN FROM EITHER STEP 1 OR 2)
+(For the actions below, ensure you have a bearer token from either steps 1 OR 2)
 3. create a fact `/facts/` && `POST`
 ```
 {
