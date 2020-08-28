@@ -62,10 +62,48 @@ Since this project is open-ended you'll need to write your own more specific use
 
 ## Getting Started
 
-Our API is hosted on [Heroku](fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow these simple steps in [Installation](#installation).
+Our API is hosted on [Heroku](fun-facs-api.herokuapp.com/). Should you wish to get a local copy up and running, follow the simple steps below in [Installation](#installation).
 
-Here are some curls if you wish to test the Heroku version. 
-- Get all cohort facts from the colection: 
+
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/fac20/week-7-BFOP.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Create a database and a test database
+- `CREATE DATABASE test_bfop;`
+- `CREATE DATABASE bfop;`
+- `\connect bfop`
+- `\include database/init.sql`
+4. Create a .env file
+- ensure this file is in your root folder
+- it should contain 3 variables:
+```sh
+ DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/bfop
+ TEST_DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/test_bfop
+ SECRET=randomstring
+ ```
+
+## Usage Instructions
+
+### What you can do:
+- create a user (automatically signed in)
+- login 
+- create a post
+- read a post by ID
+- read all facts
+- get all facts about a person
+- update a fact you've written
+- delete a fact you've written
+
+#### Here are some curls if you wish to test the Heroku version:
+- Get all cohort facts from the collection: 
 curl --request GET \
   --url https://fun-facs-api.herokuapp.com/facts/
   
@@ -104,32 +142,15 @@ curl --request DELETE \
   --url https://fun-facs-api.herokuapp.com/facts/FACT_ID_NUMBER \
   --header 'authorization: Bearer YOUR_TOKEN_HERE'
 
-### Installation
-
-1. Clone the repo
-```sh
-git clone https://github.com/fac20/week-7-BFOP.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
-3. Create a database and a test database
-- `CREATE DATABASE test_bfop;`
-- `CREATE DATABASE bfop;`
-- `\connect bfop`
-- `\include database/init.sql`
-4. Create a .env file
-- ensure this file is in your root folder
-- it should contain 3 variables: 
-  - DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/bfop
-  - TEST_DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/test_bfop
-  - SECRET=randomstring
-
-## Usage Instructions
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
+#### To use the API locally/using Insomnia/Postman:
+1. create a user (automatically signed in) `/signup` && `POST`
+2. login `/login` && `POST`
+3. create a fact `/facts/` && `POST`
+4. read a fact by ID `/facts/:id` && `GET`
+5. read all facts `/facts` && `GET`
+6. get all facts about a person `/facts/name/:name` && `GET`
+7. update a fact you've written `/facts/:id` && `PUT`
+8. delete a fact you've written `/facts/:id` && `DELETE`
 
 ## Team
 
