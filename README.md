@@ -59,6 +59,7 @@ Since this project is open-ended you'll need to write your own more specific use
 ### Stretch criteria
 
 - [x] GitHub Actions CI setup to run your tests when you push
+- [ ] Able to get a random fact 
 
 ## Getting Started
 
@@ -142,22 +143,47 @@ curl --request DELETE \
   --url https://fun-facs-api.herokuapp.com/facts/FACT_ID_NUMBER \
   --header 'authorization: Bearer YOUR_TOKEN_HERE'
 
-#### To use the API locally/using Insomnia/Postman:
+#### To use the API locally/using Insomnia/Postman: (Replace values within <>)
 1. create a user (automatically signed in) `/signup` && `POST`
+```
+{
+	"username": "<NAME>",
+	"password": "<PASSWORD>",
+	"cohort": "<FACXX>" (only 5 characters allowed)
+}
+```
 2. login `/login` && `POST`
+```
+{
+	"username": "<NAME>",
+	"password": "<PASSWORD>"
+}
+```
+(FOR THE ACTIONS BELOW, ENSURE YOU HAVE A BEARER TOKEN FROM EITHER STEP 1 OR 2)
 3. create a fact `/facts/` && `POST`
+```
+{
+	"text_content": "<FACT>",
+	"about_who": "<WHO IS IT ABOUT>"
+}
+```
 4. read a fact by ID `/facts/:id` && `GET`
 5. read all facts `/facts` && `GET`
 6. get all facts about a person `/facts/name/:name` && `GET`
 7. update a fact you've written `/facts/:id` && `PUT`
+```
+{
+	"text_content": "<FACT>"
+}
+```
 8. delete a fact you've written `/facts/:id` && `DELETE`
 
 ## Team
 
-Azizi - Scrum Facilitator,
-Lisa - Design,
-Terrence - Deployment,
-Aishah - Quality
+- Azizi - Scrum Facilitator,
+- Lisa - Design,
+- Terrence - Deployment,
+- Aishah - Quality
 
 ## Acknowledgements
 
