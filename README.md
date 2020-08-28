@@ -107,7 +107,7 @@ npm install
 ### Our table schema
 ![schema week 7](https://user-images.githubusercontent.com/26288170/91537892-e50efc80-e90e-11ea-913b-90c436618c53.jpg)
 
-#### To use the API locally/using Insomnia/Postman: (Replace values within <>)
+### To use the API locally/using Insomnia/Postman: (Replace values within <>)
 1. create a user (automatically signed in) `/signup` && `POST`
 ```
 {
@@ -142,7 +142,7 @@ npm install
 ```
 8. delete a fact you've written `/facts/:id` && `DELETE`
 
-#### Here are some curls if you wish to test the Heroku version:
+### Here are some curls if you wish to test the Heroku version:
 - Get all cohort facts from the collection: 
 curl --request GET \
   --url https://fun-facs-api.herokuapp.com/facts/
