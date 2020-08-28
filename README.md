@@ -22,10 +22,11 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
-* [Usage Instructions](#usage)
+* [Usage Instructions](#usage-instructions)
+  * [Routes and Data](#to-use-the-api-locally/using-insomnia/postman)
+  * [Curls](#here-are-some-curls-if-you-wish-to-test-the-heroku-version:)
 * [Team](#team)
 * [Acknowledgements](#acknowledgements)
 
@@ -103,6 +104,44 @@ npm install
 - update a fact you've written
 - delete a fact you've written
 
+### Our table schema
+![schema week 7](https://user-images.githubusercontent.com/26288170/91537892-e50efc80-e90e-11ea-913b-90c436618c53.jpg)
+
+#### To use the API locally/using Insomnia/Postman: (Replace values within <>)
+1. create a user (automatically signed in) `/signup` && `POST`
+```
+{
+	"username": "<NAME>",
+	"password": "<PASSWORD>",
+	"cohort": "<FACXX>" (only 5 characters allowed)
+}
+```
+2. login `/login` && `POST`
+```
+{
+	"username": "<NAME>",
+	"password": "<PASSWORD>"
+}
+```
+(FOR THE ACTIONS BELOW, ENSURE YOU HAVE A BEARER TOKEN FROM EITHER STEP 1 OR 2)
+3. create a fact `/facts/` && `POST`
+```
+{
+	"text_content": "<FACT>",
+	"about_who": "<WHO IS IT ABOUT>"
+}
+```
+4. read a fact by ID `/facts/:id` && `GET`
+5. read all facts `/facts` && `GET`
+6. get all facts about a person `/facts/name/:name` && `GET`
+7. update a fact you've written `/facts/:id` && `PUT`
+```
+{
+	"text_content": "<FACT>"
+}
+```
+8. delete a fact you've written `/facts/:id` && `DELETE`
+
 #### Here are some curls if you wish to test the Heroku version:
 - Get all cohort facts from the collection: 
 curl --request GET \
@@ -142,41 +181,6 @@ curl --request PUT \
 curl --request DELETE \
   --url https://fun-facs-api.herokuapp.com/facts/FACT_ID_NUMBER \
   --header 'authorization: Bearer YOUR_TOKEN_HERE'
-
-#### To use the API locally/using Insomnia/Postman: (Replace values within <>)
-1. create a user (automatically signed in) `/signup` && `POST`
-```
-{
-	"username": "<NAME>",
-	"password": "<PASSWORD>",
-	"cohort": "<FACXX>" (only 5 characters allowed)
-}
-```
-2. login `/login` && `POST`
-```
-{
-	"username": "<NAME>",
-	"password": "<PASSWORD>"
-}
-```
-(FOR THE ACTIONS BELOW, ENSURE YOU HAVE A BEARER TOKEN FROM EITHER STEP 1 OR 2)
-3. create a fact `/facts/` && `POST`
-```
-{
-	"text_content": "<FACT>",
-	"about_who": "<WHO IS IT ABOUT>"
-}
-```
-4. read a fact by ID `/facts/:id` && `GET`
-5. read all facts `/facts` && `GET`
-6. get all facts about a person `/facts/name/:name` && `GET`
-7. update a fact you've written `/facts/:id` && `PUT`
-```
-{
-	"text_content": "<FACT>"
-}
-```
-8. delete a fact you've written `/facts/:id` && `DELETE`
 
 ## Team
 
