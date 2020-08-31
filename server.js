@@ -13,6 +13,7 @@ app.use(express.json());
 // ----- Facts -----
 app.get("/facts/name/:name", facts.getFactsAbout);
 app.get("/facts/:id", facts.get);
+app.get("facts/random", facts.getRandom);
 app.get("/facts", facts.getAll);
 app.post("/facts/", verifyUser, facts.create);
 app.put("/facts/:id", verifyUser, facts.update);

@@ -20,6 +20,15 @@ const getFactsAbout = (req, res, next) => {
     .catch(next);
 };
 
+const getRandom = (req, res, next) => {
+  model
+    .readRandomFact()
+    .then(fact => {
+      res.send(fact);
+    })
+    .catch(next);
+};
+
 const getAll = (req, res, next) => {
   model
     .readAllFacts()
@@ -37,7 +46,7 @@ const update = (req, res, next) => {
     .readFact(factId)
     .then(fact => {
       //check that the user is the same as the author of the fact
-      //first use factid to find out who wrote it
+      //first use fact id to find out who wrote it
       //compare who wrote it to current logged in person
       if (fact.owner_id !== userId) {
         //if !match then send new error to middleware
@@ -82,4 +91,12 @@ const del = (req, res, next) => {
   });
 };
 
-module.exports = { get, getAll, update, del, create, getFactsAbout };
+module.exports = {
+  get,
+  getAll,
+  update,
+  del,
+  create,
+  getFactsAbout,
+  getRandom,
+};

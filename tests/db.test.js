@@ -95,6 +95,7 @@ test("test for reading a fact", t => {
     });
 });
 
+// read fact about named user
 test("test for reading facts about a specific person", t => {
   build()
     .then(() => {
