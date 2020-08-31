@@ -98,13 +98,10 @@ test("test for reading a fact", t => {
 // readRandomFact
 test("test for getting random fact", t => {
   build().then(() => {
-    model.facts
-      .readRandomFact()
-      // .then(result => result.rows[0])
-      .then(fact => {
-        t.ok(fact.id, `${fact.id} should have value`);
-        t.end();
-      });
+    model.facts.readRandomFact().then(fact => {
+      t.ok(fact.id, `${fact.id} should have value`);
+      t.end();
+    });
   });
 });
 

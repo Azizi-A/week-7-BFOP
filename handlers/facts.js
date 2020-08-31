@@ -93,10 +93,10 @@ const del = (req, res, next) => {
 
 module.exports = {
   get,
+  getFactsAbout,
+  getRandom,
   getAll,
   update,
   del,
   create,
-  getFactsAbout,
-  getRandom,
 };
