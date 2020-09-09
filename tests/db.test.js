@@ -95,6 +95,17 @@ test("test for reading a fact", t => {
     });
 });
 
+// readRandomFact
+test("test for getting random fact", t => {
+  build().then(() => {
+    model.facts.readRandomFact().then(fact => {
+      t.ok(fact.id, `${fact.id} should have value`);
+      t.end();
+    });
+  });
+});
+
+// read fact about named user
 test("test for reading facts about a specific person", t => {
   build()
     .then(() => {
