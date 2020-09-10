@@ -4,10 +4,12 @@ const facts = require("./handlers/facts");
 const users = require("./handlers/users");
 const verifyUser = require("./middleware/auth");
 const handleError = require("./middleware/error");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 // ----- Router handler directing -----
 // ----- Facts -----
